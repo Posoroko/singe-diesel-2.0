@@ -1,0 +1,10 @@
+:root {
+    --main-width-basis: 1100px;
+    --main-width: min(var(--main-width-basis), 100%);
+    --main-width-padding: 20px;
+}
+
+.mainWidth {
+    width: var(--main-width);
+    margin: auto;
+}

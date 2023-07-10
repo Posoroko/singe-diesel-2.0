@@ -1,0 +1,23 @@
+:root {
+    /* blue */
+    --brand-color-1: #FFBD3D; 
+    /* yellow */
+    --brand-color-2: #87f7b3;
+
+    --background: #253339;
+}
+
+
+.brandColor1 {
+    color: var(--brand-color-1);
+}
+.brandColor2 {
+    color: var(--brand-color-2);
+}
+
+.lightText {
+    color: #fff;
+}
+.darkText {
+    color: #000;
+}
