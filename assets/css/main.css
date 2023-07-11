@@ -2,3 +2,6 @@
 @import url('@/assets/css/architecture/main.css');
 @import url('@/assets/css/brand/main.css');
 
+html {
+    overflow-x: hidden;
+}

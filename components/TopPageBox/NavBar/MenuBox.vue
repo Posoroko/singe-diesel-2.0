@@ -23,6 +23,11 @@ function toggleTabs(tab) {
     console.log(openTab.value)
 }
 
+function closeMenu() {
+    menuIsOpen.value = false
+    openTab.value = 'null'
+}
+
 </script>
 
 <template>
@@ -48,22 +53,22 @@ function toggleTabs(tab) {
                 </div>
 
                 <div class="contentBox" :class="{ 'open' : openTab == 'about' }">
-                    <NuxtLink class="menuLink" to="/la-compagnie">
+                    <NuxtLink class="menuLink" to="/la-compagnie" @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>la compagnie</span>
                     </NuxtLink>
 
-                    <NuxtLink class="menuLink" to="/juan-perez-escala">
+                    <NuxtLink class="menuLink" to="/juan-perez-escala"  @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>Juan Perez-Escala</span>
                     </NuxtLink>
 
-                    <NuxtLink class="menuLink" to="/juan-perez-escala">
+                    <NuxtLink class="menuLink" to="/equipe-artistique"  @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>équipe artistique</span>
                     </NuxtLink>
 
-                    <NuxtLink class="menuLink" to="/contact">
+                    <NuxtLink class="menuLink" to="/contact"  @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>contact</span>
                     </NuxtLink>
@@ -77,27 +82,27 @@ function toggleTabs(tab) {
                 </div>
 
                 <div class="contentBox" :class="{ 'open': openTab == 'creations' }">
-                    <NuxtLink class="menuLink" to="/galerie">
+                    <NuxtLink class="menuLink" to="/galerie"  @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>galerie</span>
                     </NuxtLink>
 
-                    <NuxtLink class="menuLink" to="/spectacles">
+                    <NuxtLink class="menuLink" to="/spectacles"  @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>les spectacles</span>
                     </NuxtLink>
 
-                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/sueno">
+                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/sueno"  @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>Sueno</span>
                     </NuxtLink>
 
-                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/kazu">
+                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/kazu"  @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>Kazu</span>
                     </NuxtLink>
 
-                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/metaphores">
+                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/metaphores"  @click="closeMenu">
                         <span class="icon">arrow_right</span>
                         <span>Métaphores</span>
                     </NuxtLink>
@@ -201,7 +206,7 @@ function toggleTabs(tab) {
     
 }
 .contentBox.open {
-    height: 180px;
+    height: 210px;
     transition: 500ms ease;
     padding: 10px 20px 10px 10px;
 }

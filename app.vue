@@ -13,6 +13,9 @@
 #appBox {
     min-height: 100vh;
     background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 </style>

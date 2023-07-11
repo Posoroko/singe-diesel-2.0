@@ -9,13 +9,33 @@ const juan = {
 </script>
 
 <template>
-    <h1>Hello Juan</h1>
+    <div>
+        <HomePageIntro />
+    </div>
 
     <div class="mainWidth">
         <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
+    </div>
+
+    <div class="wideImageFrame">
+        <img class="w100" src="/images/juan-bureau-02.jpg" alt="">
     </div>
 
     <div class="mainWidth">
         <HomePageSpectacles />
     </div>
 </template>
+
+<style scoped>
+.wideImageFrame {
+    width: min(100%, 2540px);
+    height: 75vh;
+    position: relative;
+}
+.wideImageFrame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+</style>
