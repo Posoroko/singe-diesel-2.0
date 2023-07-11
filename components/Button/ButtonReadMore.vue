@@ -7,11 +7,11 @@ const props = defineProps({
 <template>
     <div class="h100 flex">
         <div class="button skewedButton pointer">
-            <NuxtLink class="link block darkText" :to="link">
-                <span>découvrir </span>
-                <span class="dot dot1">.</span>
-                <span class="dot dot2">.</span>
-                <span class="dot dot3">.</span>
+            <NuxtLink class="link block darkText flex justifyCenter gap5" :to="link">
+                <span class="text">découvrir </span>
+                <span class="text dot dot1">.</span>
+                <span class="text dot dot2">.</span>
+                <span class="text dot dot3">.</span>
             </NuxtLink>
         </div>
     </div>
@@ -52,15 +52,16 @@ const props = defineProps({
 }
 .skewedButton:hover::after,
 .skewedButton:hover::before {
-    border-radius: 5px;
+    border-top-right-radius: 25px;
     transition: 300ms ease;
 }
 
 .link {
-    font-size: 2.2rem;
+    font-size: 2.0rem;
     padding: 0.5em 0.8em;
     font-family: 'Poppins';
     filter: blur(0.3px);
+    transition: 300ms ease;
 }
 .dot {
     letter-spacing: 2px;

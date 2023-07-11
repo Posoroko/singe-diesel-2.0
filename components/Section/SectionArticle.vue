@@ -32,7 +32,5 @@ const props = defineProps({
 .sectionArticle .textBox {
     width: min(100ch, 100%);
 }
-.sectionArticle_buttonBox {
-    /* padding: 5px 0; */
-}
+
 </style>

@@ -1,10 +1,12 @@
 :root {
     /* blue */
-    --brand-color-1: #FFBD3D; 
+    --brand-color-1: #E4D089; 
     /* yellow */
     --brand-color-2: #87f7b3;
 
     --background: #253339;
+
+    --background-dark: #131516;
 }
 
 

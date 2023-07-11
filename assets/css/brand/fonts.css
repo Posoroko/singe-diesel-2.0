@@ -6,6 +6,10 @@
 html {
     font-size: 62.5%;
 }
+:root {
+    --title-font: 'Cormorant', serif;
+    --body-font: 'Poppins', sans-serif;
+}
 
 :root {
     
@@ -48,7 +52,7 @@ html {
     --body-text-family: 'Poppins';
 
     --body-text-size-1: clamp(1.6rem, 3vw + 0.1rem, 1.8rem);
-    --body-text-weight-1: 400;
+    --body-text-weight-1: 300;
     --body-text-line-height-1: 1.5;
 
     --body-text-size-2: clamp(1.8rem, 3.5vw + 0.1rem, 2.4rem);

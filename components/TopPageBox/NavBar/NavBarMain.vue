@@ -1,12 +1,17 @@
 <template>
-    <nav class="navBar">
-        
+    <nav class="navBar lightText flex justifyBetween">
+        <div class="logoBox">logo</div>
+
+        <div class="menuBox">
+            <TopPageBoxNavBarMenuBox />
+        </div>
     </nav>
 </template>
 
 <style scoped>
 .navBar {
-    height: 100px;
-    background-color: teal;
+    background-color: var(--background-dark);
+    height: 48px;
+    overflow: visible;
 }
 </style>

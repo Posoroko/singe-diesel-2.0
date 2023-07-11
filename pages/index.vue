@@ -14,4 +14,8 @@ const juan = {
     <div class="mainWidth">
         <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
     </div>
+
+    <div class="mainWidth">
+        <HomePageSpectacles />
+    </div>
 </template>

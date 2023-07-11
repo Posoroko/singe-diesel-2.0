@@ -1,5 +1,5 @@
 <template>
-    <div class="r" id="appBox">
+    <div class="" id="appBox">
         <TopPageBoxMain />
 
         <NuxtLayout />
@@ -13,7 +13,6 @@
 #appBox {
     min-height: 100vh;
     background-color: var(--background);
-    padding: 7px;
 }
 
 </style>
