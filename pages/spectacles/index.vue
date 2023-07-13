@@ -1,44 +1,52 @@
 <script setup>
-const shows = [
-    {
-        id: 0,
-        title: "Sueno",
-        synopsis: "Embarquez pour une performance marionnettique dans les mondes de Tom. ”.",
-        image: "/images/spectacles/affiche-sueno.jpg",
-        alt: "",
-        link: "/spectacles/sueno"
-    },
-    {
-        id: 1,
-        title: "Kazu",
-        synopsis: "Ce spectacle est une plongée dans l’atelier de marionnettes de Juan Perez Escala et dans l’univers du réalisme magique et de la micro fiction, courant artistique d’Amérique du Sud. ”.",
-        image: "/images/spectacles/affiche-kazu.jpg",
-        alt: "",
-        link: "/spectacles/kazu"
-    },
-    {
-        id: 2,
-        title: "Métaphores",
-        synopsis: "Ni mensonge, ni vérité, une métaphore est un voyage plus long, plus difficile, mais plus beau. Prochaine création Singe Diesel prévue en septembre 2023.",
-        image: "/images/spectacles/metaphores.jpg",
-        alt: "",
-        link: "/spectacles/metaphores"
+const appConfig = useAppConfig();
+const directusAssets = appConfig.directus.assets;
+const directusItems = appConfig.directus.items;
+
+const fetchOptions = {
+    server: true,
+    params: {
+        fields: 'id, title, poster, teaser, slug',
     }
-]
+}
+
+const { data: shows } = await useAsyncData(
+    "showsPage",
+    async () => {
+        const items = await $fetch(`${directusItems}Shows`, fetchOptions)
+
+        return items.data
+    }
+    ,
+    { server: true }
+)
 
 </script>
 
 <template>
-    <div class="pageBox mainWidth">
-        <SectionTitle title="Les spectacles" />
+    <PageMain>
+        <template #headerImage>
+            
+        </template>
 
-        <SectionArticle class="marTop50" v-for="show in shows" :key="show.id" :title="show.title" :image="show.image"
-            :alt="show.alt" :text="show.synopsis" :showButton="true" />
-    </div>
+        <template #main>
+
+            <div class="mainWidth">
+                <SectionTitle title="Les spectacles" />
+            </div>
+
+            <SectionArticle class="marTop50" v-for="show in shows" :key="show.id" 
+                :title="show.title" 
+                :image="`${directusAssets}${show.poster}`"
+                :alt="`Affiche du Spectacle ${show.title} de la compagnie Singe Diesel`" 
+                :text="show.teaser"
+                :link="`/spectacles/${show.slug}`" 
+                :showButton="true" />
+
+        </template>
+    </PageMain>
 </template>
 
 <style scoped>
-.pageBox {
-    padding: 50px 20px;
-}
+
 </style>

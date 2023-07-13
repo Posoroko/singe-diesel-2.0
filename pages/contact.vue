@@ -1,25 +1,33 @@
 <template>
-    <div class="narrowWidth">
-        <SectionTitle title="Contact" />
+    <PageMain>
+        <template #headerImage>
+    
+        </template>
 
-        <address class="contactBox">
-            <p class="bodyText1">Compagnie Singe Diesel</p>
-            <p class="bodyText1">18, rue Saint-Valentin</p>
-            <p class="bodyText1">29820 Guilers, France </p>
-        </address>
+        <template #main>
+            <div class="narrowWidth">
+                <SectionTitle title="Contact" />
 
-        <div class="contactBox">
-            <p class="bodyText1">informations :</p>
+                <address class="contactBox">
+                    <p class="bodyText1">Compagnie Singe Diesel</p>
+                    <p class="bodyText1">18, rue Saint-Valentin</p>
+                    <p class="bodyText1">29820 Guilers, France </p>
+                </address>
 
-            <a href="mailto:singediesel@gmail.com" class="bodyText2 marTop20 pointer">singediesel@gmail.com</a>
-        </div>
+                <div class="contactBox">
+                    <p class="bodyText1">informations :</p>
 
-        <div class="contactBox">
-            <p class="bodyText1">diffusion :</p>
+                    <a href="mailto:singediesel@gmail.com" class="bodyText2 marTop20 pointer">singediesel@gmail.com</a>
+                </div>
 
-            <a href="mailto:all.et.compagnies@gmail.com" class="bodyText2 marTop20 pointer">all.et.compagnies@gmail.com</a>
-        </div>
-    </div>
+                <div class="contactBox">
+                    <p class="bodyText1">diffusion :</p>
+
+                    <a href="mailto:all.et.compagnies@gmail.com" class="bodyText2 marTop20 pointer">all.et.compagnies@gmail.com</a>
+                </div>
+            </div>
+        </template>
+    </PageMain>
 </template>
 
 <style scoped>

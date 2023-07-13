@@ -121,7 +121,7 @@ function closeMenu() {
 <style scoped>
 
 .menuButton {
-    height: 48px;
+    height: 60px;
     font-size: clamp(1.6rem, 2vw + 0.1rem, 2.0rem);
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -132,6 +132,7 @@ function closeMenu() {
 
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .menuButton .text {
     display: grid;
@@ -182,6 +183,7 @@ function closeMenu() {
         display: none;
     }
     .tabBox {
+        padding-right: 20px;
         flex-direction: row;
     }
 }

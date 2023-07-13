@@ -1,35 +1,46 @@
 <script setup>
 const route = useRoute()
-const shows = {
-    sueno: {
-        id: "0",
-        title: "Sueno",
-        synopsis: "Embarquez pour une performance marionnettique dans les mondes de Tom. ”.",
-        image: "/images/spectacles/affiche-sueno.jpg",
-        alt: "",
-        link: "/spectacles/sueno"
-    },
-    kazu: {
-        id: 1,
-        title: "Kazu",
-        synopsis: "Ce spectacle est une plongée dans l’atelier de marionnettes de Juan Perez Escala et dans l’univers du réalisme magique et de la micro fiction, courant artistique d’Amérique du Sud. ”.",
-        image: "/images/spectacles/affiche-kazu.jpg",
-        alt: "",
-        link: "/spectacles/kazu"
-    },
-    metaphores: {
-        id: 2,
-        title: "Métaphores",
-        synopsis: "Ni mensonge, ni vérité, une métaphore est un voyage plus long, plus difficile, mais plus beau. Prochaine création Singe Diesel prévue en septembre 2023.",
-        image: "/images/spectacles/metaphores.jpg",
-        alt: "",
-        link: "/spectacles/metaphores"
+
+const appConfig = useAppConfig();
+const directusAssets = appConfig.directus.assets;
+const directusItems = appConfig.directus.items;
+
+const fetchOptions = {
+    server: true,
+    params: {
+        // fields: 'id, title, poster, teaser, slug',
     }
 }
+
+const { data: show } = await useAsyncData(
+    `show_${route.params.title}`,
+    async () => {
+        const items = await $fetch(`${directusItems}Shows?filter[slug][_eq]=${route.params.title}`, fetchOptions)
+        console.log(items.data[0])
+        return items.data[0]
+    }
+    ,
+    { server: true }
+)
+
 </script>
 
 <template>
-    <div class="mainWidth">
-        <SectionTitle :title="shows[route.params.title].title" />
-    </div>
+    
+
+    <PageMain>
+            <template #headerImage>
+                <img :src="`${directusAssets}${show.headerImage}`" 
+                    :alt="`Spectacle ${show.title} de la compagnie Singe Diesel`" class="headerImage_small">
+            </template>
+
+            <template #main>
+
+                <div class="mainWidth">
+                    <SectionTitle :title="show.title" />
+                </div>
+
+
+            </template>
+        </PageMain>
 </template>

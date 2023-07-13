@@ -6,24 +6,48 @@ const juan = {
     text: "Fils d'un comédien de la Comedia d’Argentine, et directeur du “theatre del bosque”, Juan est immergé dans le théâtre dès son plus jeune âge. Mais il se tourne vers les Beaux Arts et multiplie les expériences en tant que sculpteur et dessinateur. Autodidacte, il acquiert un savoir-faire de fabrication de marionnettes et de dramaturgie par l'image. ",
     link: "/juan-perez-escala"
 }
+
+const appConfig = useAppConfig();
+const directusAssets = appConfig.directus.assets;
+const directusItems = appConfig.directus.items;
+
+const fetchOptions = {
+    server: true,
+    params: {
+        // fields: 'id, title, subtitle, content, image, imageAlt, moreInfo, date_created, file, fileName',
+    }
+}
+
+const { data: pageData } = await useAsyncData(
+    "homepage",
+    async () => {
+        const items = await $fetch(`${directusItems}Homepage`, fetchOptions)
+        console.log(items.data)
+        return items.data
+    }
+    ,
+    { server: true }
+)
+
 </script>
 
 <template>
-    <div>
-        <HomePageIntro />
-    </div>
+    <PageMain>
 
-    <div class="mainWidth">
-        <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
-    </div>
+        <template #headerImage>
+            <img class="headerImage_large" :src="`${directusAssets}${pageData.headerImage}`" alt="">
+        </template>
+        
+        <template #main>
+            <HomePageIntro :text="pageData.introText" />
 
-    <div class="wideImageFrame">
-        <img class="w100" src="/images/juan-bureau-02.jpg" alt="">
-    </div>
+            <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
 
-    <div class="mainWidth">
-        <HomePageSpectacles />
-    </div>
+            <WidgetFullWidthImage :url="`${directusAssets}${pageData.stripeImage1}`" height="max(80vh, 300px)" />
+
+            <HomePageSpectacles />
+        </template>
+    </PageMain>
 </template>
 
 <style scoped>
@@ -38,4 +62,5 @@ const juan = {
     object-fit: cover;
     object-position: center;
 }
+
 </style>

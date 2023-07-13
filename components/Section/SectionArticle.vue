@@ -12,31 +12,31 @@ const props = defineProps({
 </script>
 
 <template>
-    <article class="sectionArticle flex justifyCenter wrapReverse">
-        <div class="textBox flex column justifyEnd gap20">
-            <h1 class="sectionArticleTitle bodyTitle lightText">{{ title }}</h1>
-            <h2 v-if="subtitle">{{ subtitle }}</h2>
+    <article>
+        <div class="mainWidth flex justifyCenter wrapReverse gap50">
+            <div class="textBox flex column justifyEnd gap20">
+                <h1 class="sectionArticleTitle bodyTitle lightText">{{ title }}</h1>
+                <h2 v-if="subtitle">{{ subtitle }}</h2>
 
-            <p class="lightText bodyText1">{{ text }}</p>
+                <p class="lightText bodyText1">{{ text }}</p>
 
-            <div class="sectionArticle_buttonBox block" v-if="showButton">
-                <ButtonReadMore :link="link" />
+                <div class="sectionArticle_buttonBox block" v-if="showButton">
+                    <ButtonReadMore :link="link" />
+                </div>
             </div>
-        </div>
 
-        <img :src="image" :alt="alt">
+            <img :src="image" :alt="alt">
+        </div>
     </article>
 </template>
 
 <style setup>
-.sectionArticle {
-    gap: 50px;
-}
-.sectionArticle img {
+
+img {
     width: min(250px, 100%);
     
 }
-.sectionArticle .textBox {
+.textBox {
     width: min(100ch, 100%);
 }
 

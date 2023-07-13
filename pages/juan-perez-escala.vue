@@ -1,45 +1,49 @@
+<script setup>
+const appConfig = useAppConfig();
+const directusAssets = appConfig.directus.assets;
+const directusItems = appConfig.directus.items;
+
+const fetchOptions = {
+    server: true,
+    params: {
+        fields: 'id, headerImage, paragraph1, paragraph2, paragraph3, paragraph4',
+    }
+}
+
+const { data: pageData } = await useAsyncData(
+    "juan",
+    async () => {
+        const items = await $fetch(`${directusItems}Juan`, fetchOptions)
+
+        return items.data
+    }
+    ,
+    { server: true }
+)
+</script>
+
 <template>
-    <section class="mainWidth">
+    <PageMain>
+        <template #headerImage>
+            <div class="mainWidth">
+                <img :src="`${directusAssets}${pageData.headerImage}`" alt="" class="headerImage_small">
 
-        <SectionTitle title="Juan Perez Escala" />
+                <SectionTitle title="Juan Perez Escala" />
+            </div>
+        </template>
 
-        <div class="textBox lightText">
-            <p class="introText bodyText1">
-                Fils d'un comédien de la Comedia d’Argentine, et directeur du “theatre del bosque”, Juan est immergé dans le 
-                théâtre dès son plus jeune âge. Mais il se tourne vers les Beaux Arts et multiplie les expériences en tant 
-                que sculpteur et dessinateur. Autodidacte, il acquiert un savoir-faire de fabrication de marionnettes et de 
-                dramaturgie par l'image. Arrivé en France à 20 ans, il collabore à des séries d'animation et de marionnettes 
-                sur Canal + et sur France 2. En s’installant en Bretagne, il entame des collaborations avec des compagnies de 
-                marionnettes en tant que constructeur. A partir de 2011, Juan devient le metteur en scène de la compagnie Singe Diesel. Il écrit alors ses propres histoires et approfondit son univers graphique. 
-            </p>
+        <template #main>
+            <div class="mainWidth textBox lightText">
+                <p class="introText bodyText1">{{ pageData.paragraph1 }}</p>
 
-            <p class="introText bodyText1">
-                Après le lycée des Beaux-arts en Argentine il débarque en France à 19 ans pour rejoindre son père installé depuis peu en Bretagne. 
-                De là il devient sculpteur de figurines en résine et intègre le milieu artistique breton par la rencontre avec la Cie Tro-Héol avec 
-                qui il collaborera pendant 3 ans. Il découvre également les contes et légendes de la Bretagne et plus particulièrement celles des 
-                Monts d’Arrée avec des conteurs du pays tels que Claude Le Lann et Jean-Marie Scraigne. 
-            </p>
+                <p class="introText bodyText1">{{ pageData.paragraph }}</p>
               
-            <p class="introText bodyText1">
-                Touche-à-tout et autodidacte, Juan Perez Escala continue les rencontres et s’intéresse depuis son 
-                adolescence aux films d’animation et aux techniques des dessins animés et des bandes dessinées. 
-                Il travaille quelques temps pour Disney, apprend le processus de création des films, dessine et 
-                crée des figurines. Entre 2005 et 2009, il travaille pour « JPL film », production de film d’animation, 
-                manipule et fabrique des marionnettes. Il collabore par exemple à la série d’animation « Comme à la maison » 
-                sur Canal + et « la cour des gants » sur France2.
-            </p>
+                <p class="introText bodyText1">{{ pageData.paragraph3 }}</p>
 
-            <p class="introText bodyText1">
-                Parallèlement, Juan Perez Escala nourrit un profond attachement à l’éducation artistique. 
-                Rencontrer, échanger avec autrui ne lui a jamais fait peur même quand il s’agit d’aller dans 
-                les favelas d’Argentine où la police ne rentre pas.
-                En France il découvre l’éducation populaire et se forme par le C.E.M.E.A à travers 
-                les « week end de recherche artistique et éducatif ». Il accompagne pendant 3 
-                ans des groupes de jeunes au festival d’Avignon lui permettant également de rencontrer de 
-                nombreux artistes. Il intervient également dans les écoles du territoire.
-            </p>
-        </div>
-    </section>
+                <p class="introText bodyText1">{{ pageData.paragraph4 }}</p>
+            </div>
+        </template>
+    </PageMain>
 </template>
 
 <style scoped>

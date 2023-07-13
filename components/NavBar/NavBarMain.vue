@@ -7,15 +7,21 @@
         </div>
 
         <div class="menuBox">
-            <TopPageBoxNavBarMenuBox />
+            <NavBarMenuBox />
         </div>
     </nav>
 </template>
 
+<style>
+:root {
+    --navBarHeight: 60px;
+}
+</style>
+
 <style scoped>
 .navBar {
     background-color: var(--background-dark);
-    height: 48px;
+    height: var(--navBarHeight);
     overflow: visible;
     z-index: 1000; 
 }
@@ -28,6 +34,7 @@
     transition: 300ms ease;
 }
 .logoBox{
-    padding-left: 20px;
+    height: 100%;
+    padding: 8px 20px;
 }
 </style>

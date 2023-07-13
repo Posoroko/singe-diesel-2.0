@@ -1,8 +1,7 @@
 <template>
     <div class="" id="appBox">
-        <TopPageBoxMain />
 
-        <NuxtLayout />
+        <NuxtPage />
 
         <FooterMain />
     </div>

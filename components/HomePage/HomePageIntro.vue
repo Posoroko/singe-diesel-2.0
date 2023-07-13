@@ -1,13 +1,18 @@
+<script setup>
+const props = defineProps({
+    text: String
+})
+</script>
+
 <template>
-    <div class="introBox h100vh centered mainWidth">
-        <p class="lightText">
-            La compagnie Singe Diesel est une compagnie de théâtre de marionnettes dont Juan Perez Escala construit l’univers artistique, depuis le texte jusqu’à la musique, en passant par la mise en scène et les marionnettes. Les créations intègrent une dimension onirique et poétique. Par ce biais, elles posent un autre regard sur la réalité, inspirées par le réalisme magique sud américain et empreintes de cultures populaires. Singe Diesel compte à son actif plus de 200 marionnettes et une vingtaine de décors. 
-        </p>
+    <div class="introBox centered mainWidth">
+        <p class="lightText">{{ text }}</p>
     </div>
 </template>
 
 <style scoped>
 .introBox {
+    min-height: 75vh;
     padding: 0 20px;
 }
 .introBox p {

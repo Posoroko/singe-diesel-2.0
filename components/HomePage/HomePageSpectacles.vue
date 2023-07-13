@@ -1,44 +1,44 @@
 <script setup>
-const shows = [
-    {
-        id: 0,
-        title: "Kazu",
-        image: "/images/spectacles/affiche-kazu.jpg",
-        alt: "Affiche du spectacle Kazu"
-    },
-    {
-        id: 1,
-        title: "Sueno",
-        image: "/images/spectacles/affiche-sueno.jpg",
-        alt: "Affiche du spectacle Sueno"
-    },
-    {
-        id: 2,
-        title: "Métaphores",
-        image: "/images/spectacles/metaphores.jpg",
-        alt: "Affiche du spectacle Métaphores"
+
+const appConfig = useAppConfig();
+const directusAssets = appConfig.directus.assets;
+const directusItems = appConfig.directus.items;
+
+const fetchOptions = {
+    server: true,
+    params: {
+        fields: 'id, title, poster' 
     }
-]
+}
 
+const { data: shows } = await useAsyncData(
+    "shows",
+    async () => {
+        const items = await $fetch(`${directusItems}Shows`, fetchOptions)
+        console.log(items.data)
+        return items.data
+    }
+    ,
+    { server: true }
+)
 const numberOfShows = shows.length
-
 
 </script>
 
 <template>
-    <section class="sectionSpectacles relative">
-        <div class="titleBox mainWidth">
-            <SectionTitle title="Spectacles" />
+    <section>
+        <div class="mainWidth relative">
+            <div class="titleBox mainWidth">
+                <SectionTitle title="Spectacles" />
+            </div>
+
+            <ul class="drawer flex justifyCenter alignCenter wrap">
+                <li class="showBox" v-for="show in shows" :key="show.id">
+                    <img class="showImage" :src="`${directusAssets}${show.poster}`" :alt="`Affiche du spectacle ${show.title} de la compagnie Singe Diesel`">
+                    <h2 class="showTitle poppins lightText">{{ show.title }}</h2>
+                </li>
+            </ul>
         </div>
-
-        <ul class="drawer flex justifyCenter alignCenter wrap">
-            <li class="showBox" v-for="show in shows" :key="show.id">
-                <img class="showImage" :src="show.image" :alt="show.alt">
-                <h2 class="showTitle poppins lightText">{{ show.title }}</h2>
-            </li>
-        </ul>
-
-        <!-- <WidgetLeftRightNavigation /> -->
     </section>
 </template>
 
