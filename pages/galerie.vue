@@ -49,19 +49,25 @@ function navigate(direction) {
 <template>
     <PageMain>
         <template #headerImage>
+            <img class="headerImage_small" src="/images/galerie/l'homme qui marche.jpg" alt="">
 
+            <div class="mainWidth">
+                <SectionTitle title="Galerie" />
+            </div>
         </template>
 
         <template #main>
 
-            <img class="pointer" 
-                v-for="(image, index) in images" 
-                :src="`${directusAssets}${image.image}`" 
-                :alt="`${image.alt}`"
-                :data-index="index"
-                @click="handleImageclick">
+            <div class="galeryBox">
+                <img class="galeryImage" 
+                    v-for="(image, index) in images" 
+                    :src="`${directusAssets}${image.image}`" 
+                    :alt="`${image.alt}`"
+                    :data-index="index"
+                    @click="handleImageclick">
+            </div>
 
-            <div class="modal r" v-if="modalIsOpen">
+            <div class="modal" v-if="modalIsOpen">
                 <div class="modalContent centered pad20">
                     <span class="close lightText" @click="closeModal">&times;</span>
 
@@ -76,6 +82,38 @@ function navigate(direction) {
 </template>
 
 <style scoped>
+.galeryBox {
+    min-height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.galeryImage {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 5px;
+    box-shadow: 2px 2x 10px hsl(0, 0%, 0%);
+    overflow: visible;
+    cursor: pointer;
+    transition: 150ms ease;
+}
+.galeryImage:hover{
+    scale: 1.025;
+}
+.galeryImage:nth-child(2n+1):hover {
+    rotate: 2deg;
+    transition: 150ms ease;
+}
+.galeryImage:nth-child(2n+2):hover {
+    rotate: -2deg;
+    transition: 150ms ease;
+}
 .modal {
     position: fixed;
     width: 100vw;

@@ -41,6 +41,8 @@ const { data: pageData } = await useAsyncData(
         <template #main>
             <HomePageIntro :text="pageData.introText" />
 
+            <WidgetFullWidthImage class="blended" url="/images/bandeau-aquarelle-sueno.jpg" height="max(50vh, 50px)" />
+
             <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
 
             <WidgetFullWidthImage :url="`${directusAssets}${pageData.stripeImage1}`" height="max(80vh, 300px)" />
@@ -51,6 +53,9 @@ const { data: pageData } = await useAsyncData(
 </template>
 
 <style scoped>
+.blended {
+    
+}
 .wideImageFrame {
     width: min(100%, 2540px);
     height: 75vh;

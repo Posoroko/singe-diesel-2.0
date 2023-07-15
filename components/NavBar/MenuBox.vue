@@ -47,9 +47,14 @@ function closeMenu() {
 
         <div class="tabBox" :class="{ 'open' : menuIsOpen }">
             <div class="flex column">
-                <div class="menuButton" @click="toggleTabs('about')" :class="{ 'open': openTab == 'about' }">
-                    <span class="text">à propos</span>
-                    <WidgetChevron direction="down" />
+                <div class="menuButton flex gap5" @click="toggleTabs('about')" :class="{ 'open': openTab == 'about' }">
+                    <div class="text">à propos</div>
+                    
+                    <div class="menuTabIconBox centered h100">
+                        <WidgetChevron class=""  v-if="openTab != 'about'" direction="down"/>
+                        
+                        <WidgetCloseButton v-else />
+                    </div>
                 </div>
 
                 <div class="contentBox" :class="{ 'open' : openTab == 'about' }">
@@ -76,9 +81,14 @@ function closeMenu() {
             </div>
 
             <div class="flex column">
-                <div class="menuButton" @click="toggleTabs('creations')" :class="{ 'open': openTab == 'creations' }">
+                <div class="menuButton flex gap5" @click="toggleTabs('creations')" :class="{ 'open': openTab == 'creations' }">
                     <span class="text">créations</span>
-                    <WidgetChevron direction="down" />
+
+                    <div class="menuTabIconBox centered h100">
+                        <WidgetChevron class=""  v-if="openTab != 'creations'" direction="down"/>
+                    
+                        <WidgetCloseButton v-else />
+                    </div>
                 </div>
 
                 <div class="contentBox" :class="{ 'open': openTab == 'creations' }">
@@ -87,25 +97,7 @@ function closeMenu() {
                         <span>galerie</span>
                     </NuxtLink>
 
-                    <NuxtLink class="menuLink" to="/spectacles"  @click="closeMenu">
-                        <span class="icon">arrow_right</span>
-                        <span>les spectacles</span>
-                    </NuxtLink>
-
-                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/sueno"  @click="closeMenu">
-                        <span class="icon">arrow_right</span>
-                        <span>Sueno</span>
-                    </NuxtLink>
-
-                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/kazu"  @click="closeMenu">
-                        <span class="icon">arrow_right</span>
-                        <span>Kazu</span>
-                    </NuxtLink>
-
-                    <NuxtLink class="menuLink extraLeftPadding" to="/spectacles/metaphores"  @click="closeMenu">
-                        <span class="icon">arrow_right</span>
-                        <span>Métaphores</span>
-                    </NuxtLink>
+                    <NavBarMenuBoxShowList />
                 </div>
             </div>
 
@@ -117,6 +109,30 @@ function closeMenu() {
         </div>
     </div>
 </template>
+
+<style>
+.menuTabIconBox {
+    width: 60px;
+    height: 100%;
+}
+.menuLink {
+    font-family: var(--body-font);
+    font-size: clamp(1.6rem, 2vw + 0.1rem, 2.0rem);
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.menuLink .icon {
+    color: transparent;
+}
+.menuLink:hover .icon {
+    color: var(--brand-color-1);
+}
+.extraLeftPadding {
+    padding-left: 20px;
+}
+</style>
 
 <style scoped>
 
@@ -151,7 +167,7 @@ function closeMenu() {
 .menuButton:hover::after,
 .menuButton.open::after {
     width: 100%;
-    background-color: var(--brand-color-1);
+    background-color: var(--brand-color-2);
     transition: 500ms ease;
 }
 
@@ -213,21 +229,5 @@ function closeMenu() {
     padding: 10px 20px 10px 10px;
 }
 
-.menuLink {
-    font-family: var(--body-font);
-    font-size: clamp(1.6rem, 2vw + 0.1rem, 2.0rem);
-    font-weight: 300;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-.menuLink .icon {
-    color: transparent;
-}
-.menuLink:hover .icon {
-    color: var(--brand-color-1);
-}
-.extraLeftPadding {
-    padding-left: 20px;
-}
+
 </style>

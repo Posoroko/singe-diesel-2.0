@@ -11,7 +11,7 @@
         </slot>
     </header>
 
-    <main>
+    <main class="">
         <slot name="main">
 
         </slot>
@@ -36,7 +36,13 @@ header .headerImage_small {
 
 <style scoped>
 main {
+    /* min-height: 80vh; */
+    margin: 50px 0;
     padding: clamp(5px, 2vw, 10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 150px;
 }
 
 </style>
