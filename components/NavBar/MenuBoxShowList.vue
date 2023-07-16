@@ -1,4 +1,6 @@
 <script setup>
+const emit = defineEmits(['closeMenu'])
+
 const appConfig = useAppConfig();
 const directusAssets = appConfig.directus.assets;
 const directusItems = appConfig.directus.items;
@@ -20,6 +22,11 @@ const { data: shows } = await useAsyncData(
     ,
     { server: true }
 )
+
+function closeMenu() {
+    console.log('closeMenu')
+    emit('closeMenu')
+}
 </script>
 
 <template>
@@ -34,3 +41,21 @@ const { data: shows } = await useAsyncData(
         <span v-else>{{ show.mainTitle }}</span>
     </NuxtLink>
 </template>
+
+<style scoped>
+.menuLink {
+    line-height: 0;
+    opacity: 0;
+    transition: 500ms ease;
+    padding: 0 10px 0 30px;
+}
+.contentBox.open .menuLink{
+    line-height: 1.5;
+    opacity: 1;
+    transition: 500ms ease;
+    padding: 20px;
+}
+.extraLeftPadding{
+    margin-left: 20px
+}
+</style>

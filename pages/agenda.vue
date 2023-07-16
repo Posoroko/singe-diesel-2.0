@@ -6,7 +6,7 @@ const directusItems = appConfig.directus.items;
 const fetchOptions = {
     server: true,
     params: {
-        fields: 'id, sueno, kazu, metaphores',
+        fields: 'id, showTitle, content',
     }
 }
 
@@ -14,17 +14,17 @@ const { data: agenda } = await useAsyncData(
     "agendaText",
     async () => {
         const items = await $fetch(`${directusItems}Agenda_text`, fetchOptions)
-
+        
+        items.data.forEach(item => {
+            item.content = item.content.split('\n')
+        })
+        console.log(items.data)
         return items.data
     }
     ,
     { server: true }
 )
-const shows = [
-    { title: "Sueno", slug: "sueno" },
-    { title: "Kazu", slug: "kazu"},
-    { title: "Chemin des métaphores", slug: "metaphores"}
-]
+
 </script>
 
 <template>
@@ -37,12 +37,13 @@ const shows = [
 
         <template #main>
             <ul >
-                <li v-for="show in shows" :key="show.slug" class="agendaBox mainWidth">
-                    <div v-if="agenda[show.slug]">
-                        <h3 class="bodyTitle lightText" >{{ show.title }}</h3>
+                <li v-for="show in agenda" :key="show.id" class="agendaBox mainWidth">
+                    <div v-if="show.content.length">
+                        <h3 class="bodyTitle lightText pad20" >{{ show.showTitle }}</h3>
 
-                        <p class="agendaContent bodyText1 lightText">
-                            {{ agenda[show.slug] }}
+                        <p class="agendaContent agendaText lightText"
+                            v-for="(line, index) in show.content" :key="index">
+                            {{ line }}
                         </p>
                     </div>
                 </li>
@@ -52,10 +53,13 @@ const shows = [
 </template>
 
 <style setup>
-.agendaContent {
-    white-space: pre-wrap;
-    padding-left: min(5vw, 50px);
-    line-height: 1.8;
-    margin-top: 30px;
+
+.agendaText {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.2rem, 2vw + 0.1rem, 1.8rem);
+    line-height: 1.4;
+    font-weight: 200;
+    padding-left: 20px;
+    margin-top: 10px;
 }
 </style>

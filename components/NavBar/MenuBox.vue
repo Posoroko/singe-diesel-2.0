@@ -20,13 +20,14 @@ function toggleTabs(tab) {
     } else {
         openTab.value = tab
     }
-    console.log(openTab.value)
 }
 
 function closeMenu() {
     menuIsOpen.value = false
     openTab.value = 'null'
 }
+
+
 
 </script>
 
@@ -38,7 +39,10 @@ function closeMenu() {
                 <WidgetChevron direction="right" />
             </span>
             
-            <span class="h100 text ">menu</span>
+            <div class="menuButtonText relative" :class="{ 'open': menuIsOpen }">
+                <span class="h100 text menu absolutlyCentered">menu</span>
+                <span class="h100 text close">fermer</span>
+            </div>
             
             <span class="chevronBox centered" :class="{ 'open': !menuIsOpen }">
                 <WidgetChevron direction="left" />
@@ -97,13 +101,13 @@ function closeMenu() {
                         <span>galerie</span>
                     </NuxtLink>
 
-                    <NavBarMenuBoxShowList />
+                    <NavBarMenuBoxShowList @closeMenu="closeMenu" />
                 </div>
             </div>
 
             <div class="flex column">
                 <div class="menuButton" @click="toggleTabs('agenda')" :class="{ 'open': route.path == '/agenda' }">
-                    <NuxtLink class="text" to="/agenda">agenda</NuxtLink>
+                    <NuxtLink class="text" to="/agenda" @click="closeMenu">agenda</NuxtLink>
                 </div>
             </div>
         </div>
@@ -154,6 +158,16 @@ function closeMenu() {
     display: grid;
     place-items: center;
 }
+.menuButtonText .menu,
+.menuButtonText.open .close {
+    opacity: 1;
+    transition: 500ms ease;
+}
+.menuButtonText.open .menu,
+.menuButtonText .close {
+    opacity: 0;
+    transition: 500ms ease;
+}
 .menuButton::after {
     position: absolute;
     content: '';
@@ -180,6 +194,8 @@ function closeMenu() {
         display: flex;
     }
     .tabBox {
+        width: 300px;
+        z-index: 1000;
         background-color: rgb(44, 44, 44);
         position: absolute;
         top: 100%;
@@ -213,21 +229,33 @@ function closeMenu() {
     transition: 500ms ease;
 }
 .contentBox {
-    height: 0px;
+    opacity: 0;
+    pointer-events: none;
     background-color: var(--background-dark);
-    padding: 0 20px 0 10px;
+    padding: 0 10px;
     transition: 500ms ease;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
 }
 .contentBox.open {
-    height: 210px;
+    opacity: 1;
+    pointer-events: all;
     transition: 500ms ease;
-    padding: 10px 20px 10px 10px;
+    padding: 10px 10px;
 }
-
+.menuLink {
+    line-height: 0;
+    opacity: 0;
+    padding: 0 20px;
+    transition: 500ms ease;
+}
+.contentBox.open .menuLink{
+    line-height: 1.5;
+    opacity: 1;
+    transition: 500ms ease;
+    padding: 10px 20px;
+}
 
 </style>

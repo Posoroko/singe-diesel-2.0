@@ -108,13 +108,13 @@ const { data: show } = await useAsyncData(
                             </ul>
                         </li>
                     </ul>
-                    <div class="marTop50"></div>
+                    
                 </div>
 
-                <div class="mainWidth" v-else>
+                <div class="w100" v-else>
                     <p class="altPresentation bodyText1 lightText marTop50">{{ show.presentation }}</p>
 
-                    <div class="posterBox flex justifyCenter marTop50">
+                    <div class="mainWidth posterBox flex justifyCenter marTop50">
                         <img class="poster" :src="`${directusAssets}${show.poster}`" alt="">
                     </div>
                 </div>
@@ -123,7 +123,7 @@ const { data: show } = await useAsyncData(
         </PageMain>
 </template>
 
-<style setup>
+<style scoped>
 .mainWidth.agenda {
     border-top: var(--box-border);
     padding-top: 50px;
@@ -200,7 +200,9 @@ p.presentation {
     }
 }
 .altPresentation{
-    padding: 50px 0;
+    width: min(80vw, 800px);
+    margin: auto;
+    padding: 50px 10px;
 }
 .posterBox {
     border-top: var(--box-border);
@@ -208,8 +210,11 @@ p.presentation {
     padding: 50px;
 }
 .poster {
-    width: 90vw;
-    height: 90vh;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
     object-fit: contain;
+    object-position: center;
 }
 </style>
