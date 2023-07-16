@@ -37,20 +37,22 @@ const { data: show } = await useAsyncData(
 
                 <div class="marTop50"></div>
 
-                <div class="narrowWidth">
-                    <SectionTitle :title="show.mainTitle" v-if="show.multiVersions"/>
-                    <SectionTitle :title="show.title" v-else />
+                <div class="mainWidth">
+                    <h1 class="bodyTitle lightText" v-if="show.multiVersions">{{ show.mainTitle }}</h1>
+                    
+                    <h1 class="bodyTitle lightText" v-else>{{ show.title }}</h1>
+
                 </div>
 
-                <div class="narrowWidth flex">
-                    <div class="infoBox marTop50 flex column gap5">
-                        <p v-if="show.age" class="showAge">{{show.age}}</p>
+                <div class="mainWidth">
+                    <div class="infoBox marTop50">
+                        <p v-if="show.age" class="showAge infoLine">{{show.age}}</p>
 
-                        <div class="" v-if="!show.multiVersions">
+                        <div class="infoLine" v-if="!show.multiVersions">
                             <p v-if="show.length">durée : {{ show.length }}</p>
                         </div>
 
-                        <div class="" v-if="show.multiVersions">
+                        <div class="infoLine" v-if="show.multiVersions">
                             <p v-for="version in show.versions" :key="version.Shows_versions_id.id">
                                 <span>{{ `${version.Shows_versions_id.title} -  ${version.Shows_versions_id.length}` }}</span>
                             </p>
@@ -61,49 +63,59 @@ const { data: show } = await useAsyncData(
 
             <template #main>
                 <div class="mainWidth" v-if="!show.onlyDisplayPoster">
+
                     <p class="presentation narrowWidth bodyText1 lightText">{{ show.presentation }}</p>
 
-                    <div class="flex justifyCenter alignCenter gap20">
-                        <img v-for="image in show.images" :key="image.image" :src="`${directusAssets}${image.directus_files_id}`" :alt="`Spectacle ${show.mainTitle} de la compagnie Singe Diesel`">
+                    <div class="agenda mainWidth flex justifyCenter">
+                        <div class="agendaBox flex column justifyCenter alignCenter gap20">
+                            <p class="bodyText1 lightText">Visitez l'agenda pour découvrir les dates de ce spectacle!</p>
+
+                            <ButtonReadMore link="/agenda" text="agenda"/>
+                        </div>
+                    </div>
+
+
+                    <div class="mainWidth imagesBox flex justifyCenter alignCenter gap20 marTop50">
+                        <img class="" v-for="image in show.images" :key="image.image" :src="`${directusAssets}${image.directus_files_id}`" :alt="`Spectacle ${show.mainTitle} de la compagnie Singe Diesel`">
                     </div>
 
                 
-                    <ul class="creditsBox creditText lightText" v-if="show.cast.length">
+                    <ul class="creditsBox creditText lightText marTop50" v-if="show.cast.length">
                         <li class="creditLine">
                             <h3 class="creditTitle bodyTitle lightText credtitLeftBox">Distribution</h3>
                         </li>
 
                         <li class="creditLine" v-for="el in show.cast" :key="el.Credits_id.id">
-                            <span class="credtitLeftBox">{{ el.Credits_id.role }}</span>
-                            <span>{{ ` : ` }}</span>
-                            <span>{{ el.Credits_id.name }}</span>
+                            <p class="credtitLeftBox">{{ `${el.Credits_id.role} :` }}</p>
+
+                            <p class="creditRightBox">{{ el.Credits_id.name }}</p>
                         </li>
 
                     </ul>
 
-                    <ul class="creditsBox creditText lightText" v-if="show.cast.mentions">
+                    <ul class="creditsBox creditText lightText marTop50" v-if="show.mentions">
                         <li class="creditLine">
                             <h3 class="creditTitle bodyTitle lightText credtitLeftBox">Mentions</h3>
                         </li>
 
                         <li class="creditLine" v-for="(el, index) in show.mentions" :key="index">
-                            <span class="credtitLeftBox">{{ el.Mentions_id.role }}</span>
-                            <span>{{ ` : ` }}</span>
-                            <ul>
+                            <p class="credtitLeftBox">{{ `${el.Mentions_id.role} :`  }}</p>
+
+                            <ul class="creditRightBox">
                                 <li v-for="(collaborator, index) in el.Mentions_id.collaborators" :key="index">
-                                    {{ collaborator.Collaborators_id.name }}
+                                    <p>{{ collaborator.Collaborators_id.name }}</p>
                                 </li>
                             </ul>
                         </li>
-                
                     </ul>
+                    <div class="marTop50"></div>
                 </div>
 
                 <div class="mainWidth" v-else>
-                    <p class="bodyText1 lightText">{{ show.presentation }}</p>
+                    <p class="altPresentation bodyText1 lightText marTop50">{{ show.presentation }}</p>
 
-                    <div class="flex justifyCenter marTop50">
-                        <img class="poster narrowWidth" :src="`${directusAssets}${show.poster}`" alt="">
+                    <div class="posterBox flex justifyCenter marTop50">
+                        <img class="poster" :src="`${directusAssets}${show.poster}`" alt="">
                     </div>
                 </div>
 
@@ -111,32 +123,42 @@ const { data: show } = await useAsyncData(
         </PageMain>
 </template>
 
-<style>
-:root {
-    --box-border: 1px solid  rgba(139, 240, 255, 0.179);
-}
-</style>
-
 <style setup>
+.mainWidth.agenda {
+    border-top: var(--box-border);
+    padding-top: 50px;
+}
+.agendaBox {
+    background-color: var(--background-dark);
+    padding: 30px 40px;
+    border-radius: 10px;
+    
+}
 
 .infoBox {
     font-family: 'Poppins';
     font-size: clamp(1.4rem, 2vw + 0.1rem, 1.6rem);
     font-weight: 200;
     color: white;
-    padding: 10px;
+    /* padding: 10px 0; */
     border-top: var(--box-border);
     border-bottom: var(--box-border);
 }
+.infoLine{
+    padding: 5px;
+}
 .showAge {
-    padding-bottom: 5px;
     border-bottom: var(--box-border);
 }
 p.presentation {
     white-space: pre-wrap;
-
+    padding: 75px 0;
 }
-
+.imagesBox {
+    padding: 75px 0;
+    border-top: var(--box-border);
+    border-bottom: var(--box-border);
+}
 .creditText {
     font-family: 'Poppins';
     font-size: clamp(1.4rem, 2vw + 0.1rem, 1.6rem);
@@ -147,14 +169,47 @@ p.presentation {
 
 .creditLine {
     display: flex;
-    gap: 20px;
-    padding: 5px;
+    gap: 5px;
+    padding: 5px 0;
     border-bottom: var(--box-border);
-}
-.credtitLeftBox {
-    width: min(350px, 100%);
-    text-align: right;
     
 }
-
+@media (max-width: 799px) {
+    .creditLine {
+        flex-wrap: wrap;
+    }
+    .creditLeftBox {
+        text-align: left;
+    }
+     .creditRightBox {
+        padding-left: 25px;
+        
+    }
+    .creditRightBox * {
+        margin-top: 5px;
+        
+    }
+}
+@media (min-width: 800px) {
+    .credtitLeftBox {
+        width: 30%;
+        text-align: right;
+    }
+    .creditRightBox {
+        width: 70%;
+    }
+}
+.altPresentation{
+    padding: 50px 0;
+}
+.posterBox {
+    border-top: var(--box-border);
+    border-bottom: var(--box-border);
+    padding: 50px;
+}
+.poster {
+    width: 90vw;
+    height: 90vh;
+    object-fit: contain;
+}
 </style>

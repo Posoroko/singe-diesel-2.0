@@ -9,7 +9,7 @@
                 <SectionTitle title="Contact" />
 
                 <address class="contactBox">
-                    <p class="bodyText1">Compagnie Singe Diesel</p>
+                    <p class="bodyText2">Compagnie Singe Diesel</p>
                     <p class="bodyText1">18, rue Saint-Valentin</p>
                     <p class="bodyText1">29820 Guilers, France </p>
                 </address>
@@ -31,12 +31,19 @@
 </template>
 
 <style scoped>
-.contactBox {
-    padding: 40px 20px;
-    border-bottom: 1px solid var(--brand-color-1);
+.narrowWidth {
+    padding: 50px 0;
 }
-
+.contactBox {
+    border-bottom: var(--box-border);
+}
+.contactBox {
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
 .contactBox * {
     color: white;
+    margin-top: 10px;
 }
 </style>

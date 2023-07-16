@@ -9,6 +9,8 @@
 
 
         </slot>
+
+    
     </header>
 
     <main class="">
@@ -21,6 +23,7 @@
 <style>
 header {
     width: 100%;
+    position: relative;
 }
 header .headerImage_large {
     width: 100%;
@@ -32,17 +35,23 @@ header .headerImage_small {
     height: calc(60vh - var(--navBarHeight));
     object-fit: cover;
 }
+/* .headerImage_large,
+.headerImage_small {
+    margin-bottom: 50px;
+} */
 </style>
 
 <style scoped>
+
 main {
-    /* min-height: 80vh; */
-    margin: 50px 0;
-    padding: clamp(5px, 2vw, 10px);
+    
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 150px;
+    gap: clamp(20px, 5vw, 50px);
 }
-
+/* main * {
+    padding-left: clamp(5px, 2vw, 10px);
+    padding-right: clamp(5px, 2vw, 10px); 
+} */
 </style>

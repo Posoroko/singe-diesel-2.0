@@ -26,6 +26,7 @@
 footer {
     background-color: var(--background-dark);
     padding: 100px 20px 50px 20px;
+    margin-top: 50px;
 }
 .footerLogo {
     width: clamp(90px, 10vw, 150px);

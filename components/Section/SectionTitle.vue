@@ -10,8 +10,9 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.LtitleBox {
-    padding: 20px 20px 20px 10vw;
+.titleBox {
+    /* padding: 20px 20px 20px 10vw; */
+    margin: 40px 20px 60px 10vw;
 }
 .sectionTitle {
     

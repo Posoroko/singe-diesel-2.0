@@ -36,6 +36,8 @@ const { data: pageData } = await useAsyncData(
 
         <template #headerImage>
             <img class="headerImage_large" :src="`${directusAssets}${pageData.headerImage}`" alt="">
+            
+            <h2>compagnie de théâtre de marionnettes</h2>
         </template>
         
         <template #main>
@@ -45,7 +47,7 @@ const { data: pageData } = await useAsyncData(
 
             <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
 
-            <WidgetFullWidthImage :url="`${directusAssets}${pageData.stripeImage1}`" height="max(80vh, 300px)" />
+            <img class="w100" :src="`${directusAssets}${pageData.stripeImage1}`" alt="Compagnie Singe Diesel">
 
             <HomePageSpectacles />
         </template>
@@ -53,8 +55,17 @@ const { data: pageData } = await useAsyncData(
 </template>
 
 <style scoped>
-.blended {
-    
+h2 {
+    color: rgba(255, 255, 255, 0.403);
+    font-size: 40px;
+    font-family: 'cormorant', serif;
+    text-align: center;
+    width: min(100%, 500px);
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .wideImageFrame {
     width: min(100%, 2540px);

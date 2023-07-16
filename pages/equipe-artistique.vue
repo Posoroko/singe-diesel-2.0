@@ -32,19 +32,32 @@ const { data: team } = await useAsyncData(
         </template>
 
         <template #main>
-            <SectionArticle 
-            class="marTop50" v-for="friend in team" :key="friend.id" 
-            :title="`${friend.firstName} ${friend.lastName}`" 
-            :image="`${directusAssets}${friend.image}`" 
-            :alt=" `${friend.firstName} ${friend.lastName} de la compagnie Singe Diesel`" :text="friend.bio" 
-            :showButton="false"/>
 
+            <ul class="cardBox flex gap20 wrap justifyCenter" title="Membres de l'équipe artistique">
+                <li class="card" v-for="friend in team" :key="friend.id">
+                    <article class="">
+                        <img class="portrait" :src="`${directusAssets}${friend.image}`" 
+                            :alt="`${friend.firstName} ${friend.lastName} de la compagnie Singe Diesel`">
+
+                        <h1 class="bodyText2 lightText">{{ `${friend.firstName} ${friend.lastName}` }}</h1>
+                    </article>
+                </li>
+            </ul>
         </template>
     </PageMain>
 </template>
 
 <style scoped>
-.pageBox {
-    padding: 50px 20px;
+.card {
+    width: min(100%, 300px);
+}
+.portrait {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: center;
+}
+.bodyText2 {
+    padding: 10px 0;
 }
 </style>

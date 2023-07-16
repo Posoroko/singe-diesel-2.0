@@ -6,7 +6,7 @@ const directusItems = appConfig.directus.items;
 const fetchOptions = {
     server: true,
     params: {
-        fields: 'id, title, poster, teaser, slug',
+        fields: 'id, title, mainTitle, poster, teaser, slug',
     }
 }
 
@@ -36,7 +36,7 @@ const { data: shows } = await useAsyncData(
             </div>
 
             <SectionArticle class="marTop50" v-for="show in shows" :key="show.id" 
-                :title="show.title" 
+                :title="show.title || show.mainTitle" 
                 :image="`${directusAssets}${show.poster}`"
                 :alt="`Affiche du Spectacle ${show.title} de la compagnie Singe Diesel`" 
                 :text="show.teaser"

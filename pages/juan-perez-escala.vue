@@ -24,10 +24,10 @@ const { data: pageData } = await useAsyncData(
 
 <template>
     <PageMain>
-        <template #headerImage>
-            <div class="mainWidth">
-                <img :src="`${directusAssets}${pageData.headerImage}`" alt="" class="headerImage_small">
+        <template #headerImage>            
+            <img :src="`${directusAssets}${pageData.headerImage}`" alt="" class="headerImage_small">
 
+            <div class="mainWidth">
                 <SectionTitle title="Juan Perez Escala" />
             </div>
         </template>

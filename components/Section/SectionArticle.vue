@@ -31,10 +31,14 @@ const props = defineProps({
 </template>
 
 <style setup>
-
+article {
+    padding: 30px 6px;
+}
 img {
     width: min(250px, 100%);
-    
+}
+.sectionArticleTitle {
+    padding-left: 30px;
 }
 .textBox {
     width: min(100ch, 100%);

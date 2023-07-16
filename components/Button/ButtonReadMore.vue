@@ -1,6 +1,7 @@
 <script setup>
 const props = defineProps({
-    link: String
+    link: String,
+    text: String
 })
 </script>
 
@@ -8,7 +9,8 @@ const props = defineProps({
     <div class="h100 flex">
         <div class="button skewedButton pointer">
             <NuxtLink class="link block darkText flex justifyCenter gap5" :to="link">
-                <span class="text">découvrir </span>
+                <span v-if="text">{{ text }}</span>
+                <span v-else class="text">découvrir </span>
                 <span class="text dot dot1">.</span>
                 <span class="text dot dot2">.</span>
                 <span class="text dot dot3">.</span>
