@@ -106,7 +106,7 @@ function closeMenu() {
             </div>
 
             <div class="flex column">
-                <div class="menuButton" @click="toggleTabs('agenda')" :class="{ 'open': route.path == '/agenda' }">
+                <div class="menuButton agenda" @click="toggleTabs('agenda')" :class="{ 'open': route.path == '/agenda' }">
                     <NuxtLink class="text" to="/agenda" @click="closeMenu">agenda</NuxtLink>
                 </div>
             </div>
@@ -116,8 +116,18 @@ function closeMenu() {
 
 <style>
 .menuTabIconBox {
-    width: 60px;
+    /* width: 40px; */
     height: 100%;
+}
+
+.menuLink .icon {
+    width: 20px;
+    color: transparent;
+    display: grid;
+    place-items: center;
+}
+.menuLink:hover .icon {
+    color: var(--brand-color-1);
 }
 .menuLink {
     font-family: var(--body-font);
@@ -125,16 +135,20 @@ function closeMenu() {
     font-weight: 300;
     cursor: pointer;
     display: flex;
+}
+.menuLink {
     align-items: center;
+    line-height: 0;
+    padding: 0;
+    opacity: 0;
+    transition: 500ms ease;
 }
-.menuLink .icon {
-    color: transparent;
-}
-.menuLink:hover .icon {
-    color: var(--brand-color-1);
-}
-.extraLeftPadding {
-    padding-left: 20px;
+
+.contentBox.open .menuLink{
+    line-height: 1.5;
+    opacity: 1;
+    transition: 500ms ease;
+    padding: 3px 0;
 }
 </style>
 
@@ -146,13 +160,18 @@ function closeMenu() {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     text-transform: uppercase;
-    padding: 0 20px;
     cursor: pointer;
     position: relative;
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.menuButton.agenda {
+    padding: 0 40px;
+}
+.menuButton:hover {
+    background-color: var(--background);
 }
 .menuButton .text {
     display: grid;
@@ -192,6 +211,7 @@ function closeMenu() {
 @media screen and (max-width: 767px) {
     .menuButton.main {
         display: flex;
+        padding: 0 20px;
     }
     .tabBox {
         width: 300px;
@@ -215,7 +235,7 @@ function closeMenu() {
         display: none;
     }
     .tabBox {
-        padding-right: 20px;
+        /* padding-right: 20px; */
         flex-direction: row;
     }
 }
@@ -232,7 +252,7 @@ function closeMenu() {
     opacity: 0;
     pointer-events: none;
     background-color: var(--background-dark);
-    padding: 0 10px;
+    padding: 0px 20px 0px 0;
     transition: 500ms ease;
     overflow: hidden;
     display: flex;
@@ -243,19 +263,8 @@ function closeMenu() {
     opacity: 1;
     pointer-events: all;
     transition: 500ms ease;
-    padding: 10px 10px;
+    padding: 10px 20px 10px 0;
 }
-.menuLink {
-    line-height: 0;
-    opacity: 0;
-    padding: 0 20px;
-    transition: 500ms ease;
-}
-.contentBox.open .menuLink{
-    line-height: 1.5;
-    opacity: 1;
-    transition: 500ms ease;
-    padding: 10px 20px;
-}
+
 
 </style>

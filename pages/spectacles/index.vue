@@ -38,7 +38,7 @@ const { data: shows } = await useAsyncData(
             <SectionArticle class="marTop50" v-for="show in shows" :key="show.id" 
                 :title="show.title || show.mainTitle" 
                 :image="`${directusAssets}${show.poster}`"
-                :alt="`Affiche du Spectacle ${show.title} de la compagnie Singe Diesel`" 
+                :alt="`Affiche du Spectacle ${show.title || show.mainTitle} de la compagnie Singe Diesel`" 
                 :text="show.teaser"
                 :link="`/spectacles/${show.slug}`" 
                 :showButton="true" />

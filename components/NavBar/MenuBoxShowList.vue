@@ -43,19 +43,8 @@ function closeMenu() {
 </template>
 
 <style scoped>
-.menuLink {
-    line-height: 0;
-    opacity: 0;
-    transition: 500ms ease;
-    padding: 0 10px 0 30px;
-}
-.contentBox.open .menuLink{
-    line-height: 1.5;
-    opacity: 1;
-    transition: 500ms ease;
-    padding: 20px;
-}
+
 .extraLeftPadding{
-    margin-left: 20px
+    margin-left: 10px
 }
 </style>
