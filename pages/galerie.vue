@@ -49,7 +49,7 @@ function navigate(direction) {
 <template>
     <PageMain>
         <template #headerImage>
-            <img class="headerImage_small" src="/images/galerie/l'homme qui marche.jpg" alt="">
+            <img class="headerImage_small" src="/images/galery-header.jpg" alt="">
 
             <div class="mainWidth">
                 <SectionTitle title="Galerie" />
