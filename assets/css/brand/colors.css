@@ -2,13 +2,15 @@
     /* blue */
     --brand-color-1: #E4D089; 
     /* yellow */
-    --brand-color-2: #00375e;
+    --brand-color-2: #8899f1;
 
     --background: #253339;
 
     --background-dark: #131516;
 
     --box-border: 1px solid rgba(139, 240, 255, 0.179);
+
+    --card-text-color: color: rgb(0, 75, 82);
 }
 
 

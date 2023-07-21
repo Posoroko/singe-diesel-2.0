@@ -2,7 +2,7 @@
 
 </script>
 
-<template>
+<template class="relative">
     <header>
         <NavBarMain />
         <slot name="headerImage">
@@ -49,6 +49,7 @@ main {
     flex-direction: column;
     align-items: center;
     gap: clamp(20px, 5vw, 50px);
+    z-index: 0;
 }
 /* main * {
     padding-left: clamp(5px, 2vw, 10px);

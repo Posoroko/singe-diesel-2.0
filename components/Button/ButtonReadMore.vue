@@ -19,7 +19,7 @@ const props = defineProps({
     </div>
 </template>
 
-<style setup>
+<style scoped>
 
 .button {
     position: relative;

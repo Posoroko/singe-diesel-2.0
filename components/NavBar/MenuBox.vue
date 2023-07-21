@@ -115,8 +115,7 @@ function closeMenu() {
 </template>
 
 <style>
-.menuTabIconBox {
-    /* width: 40px; */
+.menuTabIconBox {    /* width: 40px; */
     height: 100%;
 }
 
@@ -251,7 +250,7 @@ function closeMenu() {
 .contentBox {
     opacity: 0;
     pointer-events: none;
-    background-color: var(--background-dark);
+    background-color: rgba(0, 0, 0, 0.31);
     padding: 0px 20px 0px 0;
     transition: 500ms ease;
     overflow: hidden;
@@ -259,6 +258,7 @@ function closeMenu() {
     flex-direction: column;
     gap: 10px;
 }
+
 .contentBox.open {
     opacity: 1;
     pointer-events: all;

@@ -1,42 +1,33 @@
 <script setup>
 const props = defineProps({
-    title: String
+    title: String,
+    textColor: String
 })
 </script>
 <template>
     <div class="titleBox flex">
-        <h1 class="sectionTitle bodyTitle lightText">{{ title }}</h1>
+        <h1 class="title bodyTitle lightText" :class="textColor">{{ title }}</h1>
     </div>
 </template>
 
 <style scoped>
-.titleBox {
-    /* padding: 20px 20px 20px 10vw; */
+/* .titleBox {
+    padding: 20px 20px 20px 10vw;
     margin: 40px 20px 60px 10vw;
-}
-.sectionTitle {
-    
+} */
+.title {
+    /* color: var(--card-text-color); */
+    border: 1px solid var(--brand-color-1);
+    border-right: none;
+    border-left: none;
+    padding: 10px 30px;
+    margin: 30px 0;
     position: relative;
 }
-.sectionTitle:before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 25%;
-    height: 18px;
-    background-color: rgba(255, 255, 255, 0.455);
-
+.title.dark {
+    color: var(--card-text-color);
 }
-.sectionTitle:after {
-    content: "";
-    position: absolute;
-    top: calc(100% + 4px);
-    left: 12px;
-    width: 80%;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.255)
-
+.title.light {
+    color: white;
 }
-
 </style>

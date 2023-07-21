@@ -37,7 +37,9 @@ const { data: pageData } = await useAsyncData(
         <template #headerImage>
             <img class="headerImage_large" :src="`${directusAssets}${pageData.headerImage}`" alt="">
             
-            <h2>compagnie de théâtre de marionnettes</h2>
+            <div class="titleBox absolute w100 bottom0 left0">
+                <WidgetHeaderTitleCie />
+            </div>
         </template>
         
         <template #main>
@@ -47,7 +49,7 @@ const { data: pageData } = await useAsyncData(
 
             <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
 
-            <img class="w100" :src="`${directusAssets}${pageData.stripeImage1}`" alt="Compagnie Singe Diesel">
+            <img class="horizMirror w100" :src="`${directusAssets}${pageData.stripeImage1}`" alt="Compagnie Singe Diesel">
 
             <HomePageSpectacles />
         </template>
@@ -55,6 +57,9 @@ const { data: pageData } = await useAsyncData(
 </template>
 
 <style scoped>
+.horizMirror {
+    transform: scaleX(-1);
+}
 h2 {
     color: rgba(255, 255, 255, 0.403);
     font-size: 40px;

@@ -16,7 +16,14 @@ const { data: show } = await useAsyncData(
     `show_${route.params.title}`,
     async () => {
         const items = await $fetch(`${directusItems}Shows?filter[slug][_eq]=${route.params.title}`, fetchOptions)
-        console.log(items.data)
+        
+        const shows = items.data
+        shows.forEach( show => {
+            if(show.mainTitle) {
+                show.title = show.mainTitle
+            }
+        });
+
         return items.data[0]
     }
     ,
@@ -38,10 +45,7 @@ const { data: show } = await useAsyncData(
                 <div class="marTop50"></div>
 
                 <div class="mainWidth">
-                    <h1 class="bodyTitle lightText" v-if="show.multiVersions">{{ show.mainTitle }}</h1>
-                    
-                    <h1 class="bodyTitle lightText" v-else>{{ show.title }}</h1>
-
+                    <SectionTitle :title="show.title" />
                 </div>
 
                 <div class="mainWidth">
@@ -70,7 +74,7 @@ const { data: show } = await useAsyncData(
                         <div class="agendaBox flex column justifyCenter alignCenter gap20">
                             <p class="bodyText1 lightText">Visitez l'agenda pour découvrir les dates de ce spectacle!</p>
 
-                            <ButtonReadMore link="/agenda" text="agenda"/>
+                            <ButtonJumpingDots url="/agenda" textColor="light" text="agenda"/>
                         </div>
                     </div>
 

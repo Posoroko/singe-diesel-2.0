@@ -45,6 +45,10 @@ const numberOfShows = shows.length
                     
                 </li>
             </ul>
+
+            <div class="buttonBox flex justifyEnd marTop50">
+                <ButtonJumpingDots textColor="light" url="/spectacles" />
+            </div>
         </div>
     </section>
 </template>

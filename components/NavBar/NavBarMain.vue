@@ -1,5 +1,5 @@
 <template>
-    <nav class="navBar lightText flex justifyBetween">
+    <nav class="navBar lightText flex justifyBetween relative">
         <div class="logoBox h100">
             <NuxtLink class="logoLink h100 flex alignCenter justifyCenter pointer" to="/">
                 <img class="h50" src="/images/logo-long.png" alt="Logo Singe Diésel">
@@ -23,7 +23,7 @@
     background-color: var(--background-dark);
     height: var(--navBarHeight);
     overflow: visible;
-    z-index: 1000; 
+    z-index: 10000; 
 }
 .logoLink img{
     transform: scale(1);
