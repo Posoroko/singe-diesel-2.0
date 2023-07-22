@@ -45,9 +45,11 @@ const { data: pageData } = await useAsyncData(
         <template #main>
             <HomePageIntro :text="pageData.introText" />
 
-            <WidgetFullWidthImage class="blended" url="/images/bandeau-aquarelle-sueno.jpg" height="max(50vh, 50px)" />
+            <!-- <img class="w100" src="/images/bandeau-aquarelle-sueno.jpg" alt="Compagnie Singe Diesel"> -->
 
-            <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
+            <div class="juan_spacing">
+                <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
+            </div>
 
             <img class="horizMirror w100" :src="`${directusAssets}${pageData.stripeImage1}`" alt="Compagnie Singe Diesel">
 
@@ -83,5 +85,7 @@ h2 {
     object-fit: cover;
     object-position: center;
 }
-
+.juan_spacing {
+    margin: 100px 0;
+}
 </style>

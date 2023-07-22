@@ -34,6 +34,7 @@ header .headerImage_small {
     width: 100%;
     height: calc(60vh - var(--navBarHeight));
     object-fit: cover;
+    object-position: center;
 }
 /* .headerImage_large,
 .headerImage_small {

@@ -8,16 +8,16 @@ const directusItems = appConfig.directus.items;
 const fetchOptions = {
     server: true,
     params: {
-        // fields: 'id, title, poster, teaser, slug',
+        fields: 'id, title, images, images.*, description, slug, headerImage',
     }
 }
 
-const { data: images } = await useAsyncData(
-    "galery",
+const { data: album } = await useAsyncData(
+    "album",
     async () => {
-        const items = await $fetch(`${directusItems}Galery`, fetchOptions)
+        const items = await $fetch(`${directusItems}Albums?filter[slug][_eq]=${route.params.slug}`, fetchOptions)
 
-        return items.data
+        return items.data[0]
     }
     ,
     { server: true }
@@ -37,9 +37,9 @@ function closeModal() {
 
 function navigate(direction) {
     console.log(selectedImageIndex.value)
-    if(direction === 'left' && selectedImageIndex.value > 0) {
+    if (direction === 'left' && selectedImageIndex.value > 0) {
         selectedImageIndex.value--
-    } else if(direction === 'right' && selectedImageIndex.value < images.value.length - 1){
+    } else if (direction === 'right' && selectedImageIndex.value < album.value.images.length - 1) {
         selectedImageIndex.value++
     }
 }
@@ -47,35 +47,36 @@ function navigate(direction) {
 </script>
 
 <template>
-    <PageMain>
+    <PageMain v-if="album">
         <template #headerImage>
-            <img class="headerImage_small" src="/images/galery-header.jpg" alt="">
+            <img class="headerImage_small" :src="`${directusAssets}${album.headerImage}`" alt="">
 
             <div class="mainWidth">
-                <SectionTitle title="Galerie" />
+                <SectionTitle :title="`Album : ${album.title}`" />
             </div>
         </template>
 
         <template #main>
 
-            <div class="galeryBox">
-                <img class="galeryImage" 
-                    v-for="(image, index) in images" 
-                    :src="`${directusAssets}${image.image}`" 
-                    :alt="`${image.alt}`"
-                    :data-index="index"
-                    @click="handleImageclick">
+            <p class="bodyText1 lightText mainWidth marTop50">
+                {{ album.description }}
+            </p>
+
+            <div class="galeryBox mainWidth">
+                <img class="galeryImage" v-for="(image, index) in album.images" :src="`${directusAssets}${image.directus_files_id}`"
+                    :alt="`${image.alt}`" :data-index="index" @click="handleImageclick">
             </div>
 
             <div class="modal" v-if="modalIsOpen">
                 <div class="modalContent centered pad20">
                     <span class="close lightText" @click="closeModal">&times;</span>
 
-                    <img class="objectFitContain" :src="`${directusAssets}${images[selectedImageIndex].image}`" :alt="images[selectedImageIndex].alt">
+                    <img class="objectFitContain" :src="`${directusAssets}${album.images[selectedImageIndex].directus_files_id}`"
+                        alt="compagnie Singe Diesel">
 
                     <WidgetLeftRightNavigation @navigate="navigate" />
                 </div>
-            </div>    
+            </div>
         </template>
 
     </PageMain>
@@ -90,6 +91,7 @@ function navigate(direction) {
     align-items: center;
     gap: 20px;
 }
+
 .galeryImage {
     width: auto;
     height: auto;
@@ -103,17 +105,21 @@ function navigate(direction) {
     cursor: pointer;
     transition: 150ms ease;
 }
-.galeryImage:hover{
+
+.galeryImage:hover {
     scale: 1.025;
 }
+
 .galeryImage:nth-child(2n+1):hover {
     rotate: 2deg;
     transition: 150ms ease;
 }
+
 .galeryImage:nth-child(2n+2):hover {
     rotate: -2deg;
     transition: 150ms ease;
 }
+
 .modal {
     position: fixed;
     width: 100vw;
@@ -124,6 +130,7 @@ function navigate(direction) {
     background-color: #0000005d;
     backdrop-filter: blur(5px);
 }
+
 .modalContent {
     width: 100%;
     height: 100%;
@@ -132,6 +139,7 @@ function navigate(direction) {
     box-shadow: 1px 1px 10px #00000097;
     position: relative;
 }
+
 .close {
     width: 48px;
     height: 48px;
@@ -144,8 +152,8 @@ function navigate(direction) {
     display: grid;
     place-items: center;
 }
+
 .close:hover {
     rotate: 360deg;
     transition: 300ms ease;
-}
-</style>
+}</style>

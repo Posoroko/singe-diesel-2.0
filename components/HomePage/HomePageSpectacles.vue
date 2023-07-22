@@ -47,7 +47,7 @@ const numberOfShows = shows.length
             </ul>
 
             <div class="buttonBox flex justifyEnd marTop50">
-                <ButtonJumpingDots textColor="light" url="/spectacles" />
+                <ButtonJumpingDots text="découvrir les spectacles" textColor="light" url="/spectacles" />
             </div>
         </div>
     </section>
