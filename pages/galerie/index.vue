@@ -47,9 +47,7 @@ const { data: albums } = await useAsyncData(
                                 <p class="largeCard_titleNote poppins">{{ `${album.images.length} images` }}</p>
                             </div>
 
-                            
-
-                            <div class="hoverBox absoluteFull flex column justifyEvenly">
+                            <div class="hoverBox flex column justifyEvenly">
                                 <p class="bodyText1 lightTex">{{ album.description }}</p>
 
                                 <div class="buttonBox flex justifyEnd">
@@ -75,16 +73,45 @@ const { data: albums } = await useAsyncData(
     line-height: 1;
     transform: translateX(-5px);
 }
-.largeCard_textBox:hover .hoverBox {
-    opacity: 1;
-    transition: 300ms ease;
-}
+
 
 .hoverBox {
     background-color: var(--brand-color-1);
-    padding: 0px 40px;
+    padding: 0px clamp(5px, 2vw, 40px);
+}
+
+@media (max-width: 999px) or (hover: none) {
+    .hoverBox p {
+        display: none;
+    }	
+
+    .buttonBox {
+        margin-top: 20px;
+    }
+}
+
+
+@media (min-width: 1000px)  and (hover: hover){
+    .hoverBox p {
+        display: block;
+    }
+    .hoverBox {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .largeCard_textBox:hover .hoverBox {
+        opacity: 1;
+        transition: 300ms ease;
+    }
+
+.hoverBox {
     backdrop-filter: blur(10px);
-    opacity: 0;
-    transition: 300ms ease;
+        opacity: 0;
+        transition: 300ms ease;
+    }
 }
 </style>
