@@ -15,7 +15,7 @@ const fetchOptions = {
 const { data: shows } = await useAsyncData(
     "menuShows",
     async () => {
-        const items = await $fetch(`${directusItems}Shows`, fetchOptions)
+        const items = await $fetch(`${directusItems}Shows?sort=-id`, fetchOptions)
 
         return items.data
     }

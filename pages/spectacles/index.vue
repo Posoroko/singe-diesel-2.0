@@ -13,7 +13,7 @@ const fetchOptions = {
 const { data: shows } = await useAsyncData(
     "showsPage",
     async () => {
-        const items = await $fetch(`${directusItems}Shows`, fetchOptions)
+        const items = await $fetch(`${directusItems}Shows?sort=-id`, fetchOptions)
         const shows = items.data
 
         shows.forEach( show => {

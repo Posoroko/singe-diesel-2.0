@@ -79,7 +79,7 @@ const { data: show } = await useAsyncData(
                     </div>
 
 
-                    <div class="mainWidth imagesBox flex justifyCenter alignCenter gap20 marTop50" v-if="show.imgages.length">
+                    <div class="mainWidth imagesBox flex justifyCenter alignCenter gap20 marTop50" v-if="show.imgages">
                         <img class="" v-for="image in show.images" :key="image.image" :src="`${directusAssets}${image.directus_files_id}`" :alt="`Spectacle ${show.mainTitle} de la compagnie Singe Diesel`">
                     </div>
 
