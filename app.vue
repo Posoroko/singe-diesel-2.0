@@ -1,4 +1,5 @@
 <template>
+    <SeoKit />
     <div class="" id="appBox">
 
         <NuxtPage />
