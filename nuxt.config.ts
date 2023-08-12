@@ -31,9 +31,23 @@ export default defineNuxtConfig({
                 { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/seo-files/favicon-32x32.png', },
                 { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/seo-files/favicon-16x16.png', },
                 { rel: "manifest", href: "/seo-files/site.webmanifest" },
-                { rel: "shortcut icon", href: "/seo-files/favicon.ico" }
+                { rel: "shortcut icon", href: "/seo-files/favicon.ico" },
+                { rel: 'mask-icon', href: "/seo-files/safari-pinned-tab.svg", color: "#5bbad5" },
             ],
+
             meta: [
+                {
+                    name: 'msapplication-config',
+                    content: "/seo-files/browserconfig.xml"
+                },
+                {
+                    name: 'msapplication-config',
+                    content: "/seo-files/browserconfig.xml"
+                },
+                {
+                    name: 'msapplication-TitleColor',
+                    content: "#da532c"
+                },
                 {
                     name: 'viewport',
                     content: 'width=device-width, initial-scale=1',
