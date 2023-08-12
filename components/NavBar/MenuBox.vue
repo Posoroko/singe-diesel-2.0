@@ -9,7 +9,6 @@ function toggleMenu() {
         menuIsOpen.value = true
     }
 
-    console.log(menuIsOpen.value)
 }
 
 const openTab = ref('null')

@@ -14,7 +14,7 @@ const { data: pageData } = await useAsyncData(
     "compagnie",
     async () => {
         const items = await $fetch(`${directusItems}theCompany`, fetchOptions)
-        console.log(items.data)
+
         return items.data
     }
     ,

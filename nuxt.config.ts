@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     css: ['@/assets/css/main.css'],
-    ssr: false,
+    ssr: true,
     extends: [
         'nuxt-seo-kit'
     ],
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
                 },
                 {
                     name: 'og:image',
-                    content: '/seo-files/banner-1200x630.png',
+                    content: '/seo-files/banner-1200x630.webp',
                 },
                 {
                     name: 'og:url',

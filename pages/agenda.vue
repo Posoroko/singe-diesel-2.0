@@ -18,7 +18,7 @@ const { data: agenda } = await useAsyncData(
         items.data.forEach(item => {
             item.content = item.content.split('\n')
         })
-        console.log(items.data)
+
         return items.data
     }
     ,

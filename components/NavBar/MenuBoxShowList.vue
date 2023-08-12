@@ -24,7 +24,6 @@ const { data: shows } = await useAsyncData(
 )
 
 function closeMenu() {
-    console.log('closeMenu')
     emit('closeMenu')
 }
 </script>

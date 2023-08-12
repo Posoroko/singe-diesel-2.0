@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
     <SeoKit />
     <div class="" id="appBox">

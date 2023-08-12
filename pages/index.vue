@@ -22,7 +22,7 @@ const { data: pageData } = await useAsyncData(
     "homepage",
     async () => {
         const items = await $fetch(`${directusItems}Homepage`, fetchOptions)
-        console.log(items.data)
+
         return items.data
     }
     ,

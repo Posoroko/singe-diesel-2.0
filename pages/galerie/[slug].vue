@@ -36,7 +36,7 @@ function closeModal() {
 }
 
 function navigate(direction) {
-    console.log(selectedImageIndex.value)
+
     if (direction === 'left' && selectedImageIndex.value > 0) {
         selectedImageIndex.value--
     } else if (direction === 'right' && selectedImageIndex.value < album.value.images.length - 1) {
