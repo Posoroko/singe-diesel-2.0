@@ -3,19 +3,19 @@
         <img class="footerLogo" src="/images/logo-square.webp" alt="">
 
         <div class="FooterLinkBox lightText flex column justifyCenter">
-            <NuxtLink to="/contact">                
+            <NuxtLink class="link" to="/contact">                
                 <span>contact</span>    
             </NuxtLink>
 
-            <NuxtLink to="/mentions-legales">
+            <NuxtLink class="link" to="/mentions-legales">
                 <span>mentions légales</span>
             </NuxtLink>
 
-            <a href="https://monsieuredgar.com">
+            <a class="link" href="https://monsieuredgar.com">
                 <span>monsieuredgar.com</span>
             </a>
 
-            <a href="https://posoroko.com">
+            <a class="link" href="https://posoroko.com">
                 <span>posoroko.com</span>
             </a>
         </div>
@@ -31,10 +31,14 @@ footer {
 .footerLogo {
     width: clamp(90px, 10vw, 150px);
 }
-.FooterLinkBox *{
+.FooterLinkBox .link{
+    height: 48px;
     font-family: 'Poppins', sans-serif;
     font-size: clamp(1.6rem, 2.5vw + 0.1rem, 1.8rem);
     font-weight: 300;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+
 }
 </style>

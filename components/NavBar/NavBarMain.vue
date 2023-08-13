@@ -2,7 +2,7 @@
     <nav class="navBar lightText flex justifyBetween relative">
         <div class="logoBox h100">
             <NuxtLink class="logoLink h100 flex alignCenter justifyCenter pointer" to="/">
-                <img class="h50" src="/images/logo-long.png" alt="Logo Singe Diésel">
+                <img class="h50" src="/images/logo.webp" alt="Logo Singe Diésel">
             </NuxtLink>
         </div>
 

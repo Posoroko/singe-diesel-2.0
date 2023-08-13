@@ -36,7 +36,7 @@ const numberOfShows = shows.length
                 <li class="showBox" v-for="show in shows" :key="show.id">
                 
                     <NuxtLink class="showImageLink" :to="`/spectacles/${show.slug}`">
-                        <img class="showImage" :src="`${directusAssets}${show.poster}`" :alt="`Affiche du spectacle ${show.title} de la compagnie Singe Diesel`">
+                        <img class="showImage" :src="`${directusAssets}${show.poster}?key=width250`" :alt="`Affiche du spectacle ${show.title} de la compagnie Singe Diesel`">
                     </NuxtLink>
                     
                     <NuxtLink class="showTitleLink pointer" :to="`/spectacles/${show.slug}`">                    
