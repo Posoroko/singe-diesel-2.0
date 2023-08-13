@@ -1,7 +1,7 @@
 <script setup>
 const juan = {
     title: "Juan Perez",
-    image: "/images/juan_portrait_01.jpg",
+    image: "/images/juan_portrait_01.webp",
     alt: "Juan Perez-Escala, marionnettiste",
     text: "Fils d'un comédien de la Comedia d’Argentine, et directeur du “theatre del bosque”, Juan est immergé dans le théâtre dès son plus jeune âge. Mais il se tourne vers les Beaux Arts et multiplie les expériences en tant que sculpteur et dessinateur. Autodidacte, il acquiert un savoir-faire de fabrication de marionnettes et de dramaturgie par l'image. ",
     link: "/juan-perez-escala"
@@ -51,7 +51,7 @@ const { data: pageData } = await useAsyncData(
                 <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
             </div>
 
-            <img class="horizMirror w100" :src="`${directusAssets}${pageData.stripeImage1}`" alt="Compagnie Singe Diesel">
+            <img class="horizMirror w100" :src="`${directusAssets}${pageData.stripeImage1}?key=webp`" alt="Compagnie Singe Diesel">
 
             <HomePageSpectacles />
         </template>

@@ -1,6 +1,6 @@
 <template>
     <footer class="flex alignCenter justifyCenter flex gap20">
-        <img class="footerLogo" src="/images/logo-square.png" alt="">
+        <img class="footerLogo" src="/images/logo-square.webp" alt="">
 
         <div class="FooterLinkBox lightText flex column justifyCenter">
             <NuxtLink to="/contact">                

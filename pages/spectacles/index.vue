@@ -71,7 +71,7 @@ const { data: shows } = await useAsyncData(
                     </div>
 
                     <div class="largeCard_imgFrame">
-                        <img class="largeCard_image" :src="`${directusAssets}${show.poster}`" alt="alt">
+                        <img class="largeCard_image" :src="`${directusAssets}${show.poster}?key=width400`" alt="alt">
                     </div>
                 </div>
             </article>

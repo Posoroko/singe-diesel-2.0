@@ -9,7 +9,7 @@ const images = {
 
 <template>
     <header class="header_large relative" v-if="route.path == '/'">
-        <img class="headerImage" src="/images/scene-juan.jpg" alt="">
+        <img class="headerImage" src="/images/scene-juan.webp" alt="">
         <div class="headerTitle lightText">
             <!-- <h1>Singe Diesel</h1> -->
             <p>Compagnie de théâtre <br> de marionnettes</p>
@@ -17,11 +17,11 @@ const images = {
     </header>
 
     <header class="header_juan"  v-if="route.path == '/juan-perez-escala'">
-        <img src="/images/portrait-triple-nb.jpg" alt="">
+        <img src="/images/portrait-triple-nb.webp" alt="">
     </header>
 
     <header class="header_compagnie"  v-if="route.path == '/la-compagnie'">
-        <img src="/images/juan01.jpg" alt="">
+        <img src="/images/juan01.webp" alt="">
     </header>
 </template>
 
