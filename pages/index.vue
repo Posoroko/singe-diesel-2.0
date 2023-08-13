@@ -35,7 +35,7 @@ const { data: pageData } = await useAsyncData(
     <PageMain>
 
         <template #headerImage>
-            <img class="headerImage_large" :src="`${directusAssets}${pageData.headerImage}`" alt="">
+            <img class="headerImage_large" :src="`${directusAssets}${pageData.headerImage}?key=header1920`" alt="Compagnie Singe Diesel">
             
             <div class="titleBox absolute w100 bottom0 left0">
                 <WidgetHeaderTitleCie />
