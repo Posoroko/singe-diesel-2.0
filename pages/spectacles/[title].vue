@@ -8,7 +8,7 @@ const directusItems = appConfig.directus.items;
 const fetchOptions = {
     server: true,
     params: {
-        fields: 'id, onlyDisplayPoster, title, age, length, mainTitle, multiVersions, versions, versions.Shows_versions_id.*, presentation, headerImage, poster, images, images.directus_files_id, bookingn, show, showOnline, cast, cast.Credits_id.*, mentions, mentions.Mentions_id.*, mentions.Mentions_id.collaborators.Collaborators_id.* ',
+        fields: 'id, onlyDisplayPoster, title, age, length, mainTitle, multiVersions, versions, versions.Shows_versions_id.*, presentation, headerImage, poster, images, images.directus_files_id, booking, showOnline, cast, cast.Credits_id.*, mentions, mentions.Mentions_id.*, mentions.Mentions_id.collaborators.Collaborators_id.* ',
     }
 }
 

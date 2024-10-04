@@ -32,7 +32,7 @@ const { data: pageData } = await useAsyncData(
 </script>
 
 <template>
-    <PageMain>
+    <PageMain v-if="pageData">
 
         <template #headerImage>
             <img class="headerImage_large" :src="`${directusAssets}${pageData.headerImage}?key=header1920`" alt="Compagnie Singe Diesel">
