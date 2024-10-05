@@ -14,11 +14,13 @@
 </template>
 
 <style ccoped>
+html {
+    background-color: rgb(17, 17, 17);
+}
 #appBox {
     width: min(100%, 1920px);
     margin: 0 auto;
     min-height: 100vh;
-    /* background-color: var(--background); */
     background: radial-gradient(circle, rgb(21, 40, 41) 0%, rgb(25, 36, 41) 100%);
     position: relative;
     display: flex;

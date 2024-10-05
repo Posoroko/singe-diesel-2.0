@@ -1,6 +1,6 @@
 <script setup>
 const juan = {
-    title: "Juan Perez",
+    title: "Juan Perez Escala",
     image: "/images/juan_portrait_01.webp",
     alt: "Juan Perez-Escala, marionnettiste",
     text: "Fils d'un comédien de la Comedia d’Argentine, et directeur du “theatre del bosque”, Juan est immergé dans le théâtre dès son plus jeune âge. Mais il se tourne vers les Beaux Arts et multiplie les expériences en tant que sculpteur et dessinateur. Autodidacte, il acquiert un savoir-faire de fabrication de marionnettes et de dramaturgie par l'image. ",
@@ -47,9 +47,41 @@ const { data: pageData } = await useAsyncData(
 
             <!-- <img class="w100" src="/images/bandeau-aquarelle-sueno.jpg" alt="Compagnie Singe Diesel"> -->
 
-            <div class="juan_spacing">
-                <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/>
-            </div>
+            <!-- <div class="juan_spacing">
+                <div class="largeCard"> -->
+                    <!-- <SectionArticle :title="juan.title" :image="juan.image" :alt="juan.alt" :text="juan.text" :link="juan.link"/> -->
+
+                    <article class="largeCard">
+                        <div class="mainWidth flex justifyCenter wrapReverse">
+                            <div class="largeCard_textBox flex relative column justifyCenter">
+                                <div>
+                                    <h1 class="largeCard_title"> 
+                                        {{ juan.title }}
+                                    </h1>
+                                    
+                                    <h2 v-if="subtitle">{{ subtitle }}</h2>
+                                </div>
+
+                                <p class=" largeCard_text bodyText1">{{ juan.text }}</p>
+
+                                <div class="buttonBox flex justifyEnd marTop20">
+                                    <ButtonJumpingDots textColor="dark" url="/juan-perez-escala" />
+                                </div>
+
+                                <NuxtLink to="/juan-perez-escala" class="largeCard_agendaBtn centered">
+                                    <span class="icon">
+                                        event
+                                    </span>
+                                </NuxtLink>
+                            </div>
+
+                            <div class="largeCard_imgFrame">
+                                <img class="largeCard_image" :src="juan.image" :alt="juan.alt">
+                            </div>
+                        </div>
+                    </article>
+                <!-- </div>
+            </div> -->
 
             <img class="horizMirror w100" :src="`${directusAssets}${pageData.stripeImage1}?key=webp`" alt="Compagnie Singe Diesel">
 
@@ -87,5 +119,10 @@ h2 {
 }
 .juan_spacing {
     margin: 100px 0;
+    display: flex;
+    justify-content: center;
+}
+.juan_card {
+    background-color: black;
 }
 </style>

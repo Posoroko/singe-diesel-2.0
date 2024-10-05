@@ -36,36 +36,43 @@ const { data: albums } = await useAsyncData(
                 Explorez les albums d'images pour découvrir l'univers de la compagnie Singe Diesel.
             </p>
 
-            <article class="largeCard" v-for="album in albums" :key="album.id">
-                    <div class="mainWidth flex justifyCenter  wrapReverse">
-                        <div class="largeCard_textBox flex relative column justifyCenter">
-                            <div>
-                                <h1 class="albumCard_title "> 
-                                    {{ album.title }}
-                                </h1>
-                            
-                                <p class="largeCard_titleNote poppins">{{ `${album.images.length} images` }}</p>
-                            </div>
+                <div class="cardBox flex justifyCenter gap20 wrap">              
+                    <article class="largeCard vertical" v-for="album in albums" :key="album.id">
+                        <div class="flex justifyCenter  wrapReverse relative">
+                            <div class="largeCard_textBox flex  column justifyCenter">
+                                <div>
+                                    <h1 class="albumCard_title "> 
+                                        {{ album.title }}
+                                    </h1>
+                                
+                                    <p class="largeCard_titleNote poppins marTop20">nombre d'image: {{ album.images.length }}</p>
+                                </div>
 
-                            <div class="hoverBox flex column justifyEvenly">
-                                <p class="bodyText1 lightTex">{{ album.description }}</p>
+                                <div class="hoverBox flex column justifyEvenly">
+                                    <p class="bodyText1 lightTex">{{ album.description }}</p>
 
-                                <div class="buttonBox flex justifyEnd">
-                                    <ButtonJumpingDots text="voir l'album" textColor="dark" :url="`/galerie/${album.slug}`" />
+                                    <div class="buttonBox flex justifyEnd">
+                                        <ButtonJumpingDots text="voir l'album" textColor="dark" :url="`/galerie/${album.slug}`" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="largeCard_imgFrame">
-                            <img class="largeCard_image" :src="`${directusAssets}${album.headerImage}`" alt="alt">
+                            <div class="largeCard_imgFrame">
+                                <img class="largeCard_image" :src="`${directusAssets}${album.headerImage}?key=album-cover`" alt="alt">
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
+                </div>
+
         </template>
     </PageMain>
 </template>
 
 <style setup>
+.cardBox {
+    width: min(900px, 100%);
+}
+
 .albumCard_title {
     font-family: 'Poppins', sans-serif;
     font-size: 40px;
@@ -104,7 +111,7 @@ const { data: albums } = await useAsyncData(
     }
 
     .largeCard_textBox:hover .hoverBox {
-        opacity: 1;
+        opacity: 0.95;
         transition: 300ms ease;
     }
 

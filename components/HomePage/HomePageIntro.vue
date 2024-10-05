@@ -17,11 +17,11 @@ const props = defineProps({
 }
 .introBox p {
     font-family: 'Poppins', sans-serif;
-    width: min(65ch, 100%);
-    font-size: clamp(1.6rem, 2.5vw + 0.1rem, 2.2rem);
-    font-weight: 200;
-    line-height: 1.5;
-    text-align: justify;
+    width: min(50ch, 100%);
+    font-size: clamp(1.6rem, 2.5vw + 0.1rem, 2.4rem);
+    font-weight: 300;
+    line-height: 1.7;
+    /* text-align: justify; */
     text-indent: 2rem;
 }
 </style>
