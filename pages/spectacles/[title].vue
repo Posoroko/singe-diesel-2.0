@@ -8,7 +8,7 @@ const directusItems = appConfig.directus.items;
 const fetchOptions = {
     server: true,
     params: {
-        fields: 'id, onlyDisplayPoster, title, age, length, mainTitle, multiVersions, versions, versions.Shows_versions_id.*, presentation, headerImage, poster, images, images.directus_files_id, booking, showOnline, cast, cast.Credits_id.*, mentions, mentions.Mentions_id.*, mentions.Mentions_id.collaborators.Collaborators_id.* ',
+        fields: 'id, videos.*, onlyDisplayPoster, title, age, length, mainTitle, multiVersions, versions, versions.Shows_versions_id.*, presentation, headerImage, poster, images, images.directus_files_id, booking, showOnline, cast, cast.Credits_id.*, mentions, mentions.Mentions_id.*, mentions.Mentions_id.collaborators.Collaborators_id.* ',
     }
 }
 
@@ -33,8 +33,6 @@ const { data: show } = await useAsyncData(
 </script>
 
 <template>
-    
-
     <PageMain v-if="show">
             <template #headerImage>
                 <img  :src="`${directusAssets}${show.headerImage}`" 
@@ -78,6 +76,9 @@ const { data: show } = await useAsyncData(
                         </div>
                     </div>
 
+                    <div class="mainWidth marTop50">
+                        <SectionShowsVideos :videos="show.videos" />
+                    </div>
 
                     <div class="mainWidth imagesBox flex justifyCenter alignCenter gap20 marTop50" v-if="show.imgages">
                         <img class="" v-for="image in show.images" :key="image.image" :src="`${directusAssets}${image.directus_files_id}`" :alt="`Spectacle ${show.mainTitle} de la compagnie Singe Diesel`">
@@ -122,7 +123,6 @@ const { data: show } = await useAsyncData(
                         <img class="poster" :src="`${directusAssets}${show.poster}`" alt="">
                     </div>
                 </div>
-
             </template>
         </PageMain>
 </template>
@@ -222,3 +222,4 @@ p.presentation {
     object-position: center;
 }
 </style>
+
