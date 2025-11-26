@@ -33,9 +33,8 @@ const { data: pageData } = await useAsyncData(
 
 <template>
     <PageMain v-if="pageData">
-
         <template #headerImage>
-            <img class="headerImage_large" :src="`${directusAssets}${pageData.headerImage}?key=header1920`" alt="Compagnie Singe Diesel">
+            <img class="headerImage_large" :src="`${directusAssets}${pageData.headerImage}?key=header1920&v=${Date.now()}`" alt="Compagnie Singe Diesel">
             
             <div class="titleBox absolute w100 bottom0 left0">
                 <WidgetHeaderTitleCie />
